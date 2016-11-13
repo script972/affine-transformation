@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab3.controller.Controller">
+   <top>
+       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Button focusTraversable="false" mnemonicParsing="false" onAction="#drawFigure" text="draw" />
+         <ColorPicker fx:id="CP" />
+         <Button mnemonicParsing="false" onAction="#showManual" text="manual" />
+         <AnchorPane fx:id="manualpanel" prefHeight="31.0" prefWidth="340.0" style="-fx-opacity: 0;" visible="true">
+            <children>
+               <Label layoutX="1.0" layoutY="-3.0" text="Q - reverse rotation" />
+               <Label layoutX="3.0" layoutY="14.0" text="R- rotation" />
+               <Label layoutX="119.0" layoutY="-3.0" text="-&gt; go left" />
+               <Label layoutX="119.0" layoutY="14.0" text="&lt;- go right" />
+               <Label layoutX="198.0" layoutY="-3.0" text="p zoom +" />
+               <Label layoutX="198.0" layoutY="14.0" text="- zoom -" />
+            </children>
+         </AnchorPane>
+       </ToolBar>
+   </top>
+   <center>
+       <Pane fx:id="mainPanel" focusTraversable="true" onKeyPressed="#processKey" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Canvas fx:id="canvas" height="356.0" width="600.0" />
+       </Pane>
+   </center>
+</BorderPane>
