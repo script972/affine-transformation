@@ -43,32 +43,33 @@ public class Controller implements Initializable{
         canvas.heightProperty().bind(mainPanel.heightProperty());
         canvas.widthProperty().addListener(e->draw());
         canvas.heightProperty().addListener(e->draw());
-        mainPanel.requestFocus();
+        canvas.requestFocus();
     }
 
     private void draw() {
+        canvas.setFocusTraversable(true);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.WHITESMOKE);
-
         gc.fillRect(0,0,canvas.getWidth(), canvas.getHeight());
         f.draw(gc, CP.getValue());
+        canvas.requestFocus();
     }
 
     public void processKey(Event event) {
         KeyEvent keyEvent = (KeyEvent) event;
         KeyCode keyCode = keyEvent.getCode();
-
         switch (keyCode) {
-            case UP:
+            case W:
+
                 f.move(0,-DELTA);
                 break;
-            case DOWN:
+            case S:
                 f.move(0,DELTA);
                 break;
-            case LEFT:
+            case A:
                 f.move(-DELTA,0);
                 break;
-            case RIGHT:
+            case D:
                 f.move(DELTA,0);
                 break;
             case P:
@@ -90,8 +91,5 @@ public class Controller implements Initializable{
     public void showManual(ActionEvent actionEvent) {
 
         manualpanel.setStyle("-fx-opacity: 1");
-
-
-
     }
 }

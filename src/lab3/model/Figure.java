@@ -3,6 +3,7 @@ package lab3.model;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.paint.Color;
+import lab3.controller.Controller;
 
 /**
  * Created by script972 on 08.10.2015.
@@ -52,12 +53,8 @@ public class Figure {
                 xe[j] = fx(x[polygon[j]], y[polygon[j]]);
                 ye[j] = fy(x[polygon[j]], y[polygon[j]]);
             }
-
-
             gc.strokePolygon(xe, ye, xe.length);
         }
-
-
 
         for (int[] polygon : polygons1) {
             double[] xe = new double[polygon.length];
@@ -82,10 +79,16 @@ public class Figure {
     }
 
     public void move(double dx, double dy) {
+
         double[][] t = {
                 {1,0,dx},{0,1,dy},{0,0,1}
         };
         matrix = multMatrix(t,matrix);
+        System.out.println("---------------------"+matrix[0][2]);
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.println(matrix[i][j]);
+            }
     }
 
     public void scale(double v) {
@@ -114,6 +117,23 @@ public class Figure {
                 }
             }
         }
+        if(matrix[1][2]<-10) {
+            matrix[1][2]=0;
+            return matrix;
+        }
+        if(matrix[1][2]>205) {
+            matrix[1][2]=200;
+            return matrix;
+        }
+        if (matrix[0][2]<-25){
+            matrix[0][2]=-20;
+            return matrix;
+        }
+        if (matrix[0][2]>345){
+            matrix[0][2]=345;
+            return matrix;
+        }
+
         return result;
     }
 }

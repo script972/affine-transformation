@@ -28,8 +28,8 @@
        </ToolBar>
    </top>
    <center>
-       <Pane fx:id="mainPanel" focusTraversable="true" onKeyPressed="#processKey" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <Canvas fx:id="canvas" height="356.0" width="600.0" />
+       <Pane fx:id="mainPanel"  onKeyPressed="#processKey" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Canvas  fx:id="canvas"   height="356.0" width="600.0" />
        </Pane>
    </center>
 </BorderPane>
